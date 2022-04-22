@@ -1,3 +1,20 @@
+
+.Item {
+  text-align: center;
+  margin-left: 38%;
+  margin-top: 1%;
+  width: 48%;
+  border: 2px solid blue;
+}
+
+.Add-item{
+  text-align: center;
+  width: 50%;
+  margin-left: 25%;
+  margin-bottom:  3%;
+  border: 5px solid red;
+}
+
 .App {
   text-align: center;
 }

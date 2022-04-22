@@ -1,0 +1,13 @@
+{
+  "resourceName": "s347756404",
+  "policyUUID": "47756404",
+  "bucketName": "meetup2e932c5544304e2cbd19d3985ac246d5",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "groupAccess": {}
+}

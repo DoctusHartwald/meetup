@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import '@aws-amplify/ui-react/styles.css';
+import Amplify from "aws-amplify";
+import awsExports from "./aws-exports";
+import { useEffect, useState } from 'react';
+import ProfileToolbar from './Component/ProfileToolBar';
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import {Auth} from 'aws-amplify';
+import AddItem from './Component/AddItem';
+import Items from './Component/Items';
+
+
+Amplify.configure(awsExports);
+
+const App = () => {
+  const[currentUser,setCurrentUser] = useState(undefined);
+
+  useEffect(()=> {
+    async function getAuthUser(){
+      setCurrentUser(await Auth.currentAuthenticatedUser())
+    }
+    getAuthUser()
+  }, [] )
+
+  return currentUser ? <div>
+    <ProfileToolbar currentUser={currentUser} />
+    <AddItem currentUser={currentUser}/>
+    <Items/>
+  </div> :null
 }
 
-export default App;
+export default withAuthenticator(App);
